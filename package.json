@@ -1,0 +1,27 @@
+{
+  "name": "se_16_172023_p",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camper4/SE_16_172023_P.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camper4/SE_16_172023_P/issues"
+  },
+  "homepage": "https://github.com/camper4/SE_16_172023_P#readme",
+  "dependencies": {
+    "all": "0.0.0",
+    "bind": "^0.1.7",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "pg": "^6.1.0"
+  }
+}

@@ -8,9 +8,11 @@ var util = require('util');
 //post
 var bind = require('bind');
 
-var db = require('./database.js')
+var splittare = require('split');
 
-var HTML = require('./createHTML.js')
+var db = require('./database.js');
+
+var HTML = require('./createHTML.js');
 
 var bodyParser = require('body-parser');
 
@@ -66,14 +68,8 @@ app.get('/caricagiorni', function(req,res){
 		}
 		else {
           //altrimenti creo con la funzione richiamata da createHTML 
-          //il tbody della tabella che visualizzerò nella prossima pagina in modo dinamico
+          //il tbody della tabella dei giorni disponibili che visualizzerò nella prossima pagina in modo dinamico
           var tbody = HTML.creaTbodyGiorni(giorni);
-          
-          //carico in sessione le date disponibili così da non dover fare successivamente query che rallentano
-          req.session.date_disponibili = "";
-          for(a in giorni){
-            req.session.date_disponibili += giorni[a].giorno + giorni[a].mese + giorni[a].anno + "\n";
-          }
           
           //carico il prossimo file html col tbody creato con le varie date
           bind.toFile('template/selezione_giorni.html',{
@@ -88,31 +84,48 @@ app.get('/caricagiorni', function(req,res){
 
 
 app.post('/caricapasti', function(req,res){
-	/*
-	db.loadQuery({
-		text: 'select data from GiorniOrdinazioni',
-	}, function(err,giorni) {
-		if(err){
-		  res.redirect('/error');
+  
+  //query per la ricerca nel database delle pietanze nei giorni selezionati
+  var query_text = 'select giorno, mese, anno, primo , secondo , contorno , dessert from GiorniOrdinazioni where ';
+  
+  //controllo se sono stati selezionati uno o più checkbox (checkgiorni restituirà solo il value delle caselle selezionate)
+  //che è stato settato con la data stessa
+  switch(typeof(req.body.checkgiorni)){
+    case "string": //se è stato selezionato un solo checkbox avrò una stringa che userò come unica ricerca della query
+      query_text += "(giorno || mese || anno)='" + req.body.checkgiorni + "'";
+      break;
+    case "object": //se ci sono più caselle selezionate le concateno con un 'OR' nella query
+      for(i in req.body.checkgiorni){
+        if(i == req.body.checkgiorni.length-1) //se sono arrivato all'ultima casella selezionata non aggiungo 'OR'
+          query_text += "(giorno || mese || anno)='" + req.body.checkgiorni[i] +"'";
+        else
+          query_text += "(giorno || mese || anno)='" + req.body.checkgiorni[i] +"'" + " or ";
+      }
+    default:
+      break;
+  }
+   
+  //chiamo la funzione loadQuery che esegue la query che passo come argomento e mi ritorna il risultato
+  db.loadQuery({
+      text: query_text
+  }, function(err,ordinazioni_possibili) {
+      if(err){ //controllo che non ci siano errori
+		  res.redirect('/error'); //se ce ne sono rimando alla pagina di errore
 		}
-		else {
-          */
-          var dispon = req.session.date.split("\n")
-          console.log(dispon);
-          var tbody = "<tbody><tr><td>10-12-1555555555</td><td><input type=\"checkbox\"></td></tr><tr><td>11-12-15</td><td><input type=\"checkbox\"></td></tr><tr><td>12-12-15</td><td><input type=\"checkbox\"></td></tr></tbody>"
-          //creare tbody con i giorni presi dal database
-          
-          bind.toFile('template/selezione_pasti.html',{
-              tbody: tbody
-          },function(data){
-              res.writeHead(200, {'Content-Type':'text/html'});
-              res.end(data);
-          });
-		});
-        /*
-    });
+      else {
+        //altrimenti creo con la funzione richiamata da createHTML 
+        //il tbody della tabella delle pietanze nei giorni scelti che visualizzerò nella prossima pagina in modo dinamico
+        var tbody = HTML.creaTabellaOrdinazioniPossibili(ordinazioni_possibili);
+
+        bind.toFile('template/selezione_pasti.html',{
+            tbody: tbody
+        },function(data){
+            res.writeHead(200, {'Content-Type':'text/html'});
+            res.end(data);
+        });
+      }
+  });
 });		
-*/
 
 
 

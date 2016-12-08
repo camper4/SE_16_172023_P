@@ -1,45 +1,20 @@
 
-function creaTbodyGiorni(){
+function creaTbodyGiorni(giorni){
   var text = "<tbody>\n";
-  /*
-  for( var i=0; i < quantita_righe_date; i++){
+  for( a in giorni){
     text += "<tr>\n";
       text += "<td>";
-      text += datadaldatabase
+      text += giorni[a].giorno + "-" + giorni[a].mese + "-" + giorni[a].anno
       text += "</td>\n"
       text += "<td>";
-      text += "<input type=\"checkbox\">" //manca il valore per prendere la crocetta
+      text += "<input type=\"checkbox\" name=\""+giorni[a].giorno+"-"+giorni[a].mese+"-"+giorni[a].anno+"\">"
       text += "</td>\n"
     text += "</tr>\n"
   }
-  */
-  text += "<tr>\n";
-      text += "<td>";
-      text += "holaaaa"
-      text += "</td>\n"
-      text += "<td>";
-      text += "<input type=\"checkbox\">" //manca il valore per prendere la crocetta
-      text += "</td>\n"
-    text += "</tr>\n"
   text += "</tbody>\n";
   return text;
 }
 
-/*
-  <tbody>
-      <tr>
-          <td>10-12-15</td>
-          <td><input type="checkbox"></td>
-      </tr>
-      <tr>
-          <td>11-12-15</td>
-          <td><input type="checkbox"></td>
-      </tr>
-      <tr>
-          <td>12-12-15</td>
-          <td><input type="checkbox"></td>
-      </tr>
-  </tbody>
-*/
+
 
 exports.creaTbodyGiorni = creaTbodyGiorni; 

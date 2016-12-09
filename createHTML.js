@@ -18,29 +18,28 @@ function creaTbodyGiorni(giorni){
 function creaTabellaOrdinazioniPossibili(ord){
   text = "<tbody>\n";
   for (a in ord){
-    
     text += "<tr>\n";
       text += "<td><b>";
         text += ord[a].giorno + "-" + ord[a].mese + "-" + ord[a].anno;
       text += "</b></td>\n";
       text += "<td>";
         text += ord[a].primo;
-        text += "<input name=\"checkscelte\" type=\"checkbox\" value=\""+ord[a].giorno+ord[a].mese+ord[a].anno+"\">";
+        text += "<input name=\"checkscelte\" type=\"checkbox\" value=\""+ord[a].giorno+ord[a].mese+ord[a].anno+" = "+ord[a].primo+"\">";
         text += "<button class=\"btn-info\"><span class=\"glyphicon glyphicon-info-sign\"></span></button>";
       text += "</td>\n";
       text += "<td>";
         text += ord[a].secondo;
-        text += "<input name=\"checkscelte\" type=\"checkbox\" value=\""+ord[a].giorno+ord[a].mese+ord[a].anno+"\">";
+        text += "<input name=\"checkscelte\" type=\"checkbox\" value=\""+ord[a].giorno+ord[a].mese+ord[a].anno+" = "+ord[a].secondo+"\">";
         text += "<button class=\"btn-info\"><span class=\"glyphicon glyphicon-info-sign\"></span></button>";
       text += "</td>\n";
       text += "<td>";
         text += ord[a].contorno;
-        text += "<input name=\"checkscelte\" type=\"checkbox\" value=\""+ord[a].giorno+ord[a].mese+ord[a].anno+"\">";
+        text += "<input name=\"checkscelte\" type=\"checkbox\" value=\""+ord[a].giorno+ord[a].mese+ord[a].anno+" = "+ord[a].contorno+"\">";
         text += "<button class=\"btn-info\"><span class=\"glyphicon glyphicon-info-sign\"></span></button>";
       text += "</td>\n";
       text += "<td>";
         text += ord[a].dessert;
-        text += "<input name=\"checkscelte\" type=\"checkbox\" value=\""+ord[a].giorno+ord[a].mese+ord[a].anno+"\">";
+        text += "<input name=\"checkscelte\" type=\"checkbox\" value=\""+ord[a].giorno+ord[a].mese+ord[a].anno+" = "+ord[a].dessert+"\">";
         text += "<button class=\"btn-info\"><span class=\"glyphicon glyphicon-info-sign\"></span></button>";
       text += "</td>\n";
     text += "</tr>\n";

@@ -5,7 +5,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="stile.css" type="text/css" />
+  <link rel="stylesheet" href="stile.css" type="text/css" />
+  <script src="script.js"></script> 
 </head>
 <body>
 	<div class="container">
@@ -15,21 +16,25 @@
 			</div>
 		</div>
 		<div class="row">
-			<form>
+			<form name="form_dati" method="post">
 				<div class="sinistro col-md-3 col-sm-3 col-xs-3"></div>
 				<div class="centrale col-md-6 col-sm-6 col-xs-6">
 					<div class="form-group">
-						<label for="usr">Nome:</label><input type="text" class="form-control" id="nome">
+						<label for="usr">Nome:</label><input type="text" class="form-control" name="nome">
 					</div>
 					<div class="form-group">
-						<label for="pwd">Cognome:</label><input type="text" class="form-control" id="cognome">
+						<label for="pwd">Cognome:</label><input type="text" class="form-control" name="cognome">
 					</div>
 					<div class="form-group">
-						<label for="pwd">CODICE FISCALE:</label><input type="text" class="form-control" id="cod_fiscale">
+						<label for="pwd">CODICE FISCALE:</label><input type="text" class="form-control" name="cod_fiscale">
 					</div>	
 					<div class="form-group">
-						<label for="pwd">Indirizzo consegna:</label><input type="text" class="form-control" id="indirizzo">
+						<label for="pwd">Indirizzo consegna ( Via , città , Provincia):</label><input type="text" class="form-control" name="indirizzo">
 					</div>	
+                    <div class="form-group">
+						<label for="pwd">E-mail:</label><input type="text" class="form-control" name="email">
+					</div>	
+                    <div> (: ordinazioni :)</div>
 				</div>
 				<div class="destro col-md-3 col-sm-3 col-xs-3"></div>
 			</form>
@@ -38,7 +43,7 @@
 			<div class="sinistro col-md-2 col-sm-2 col-xs-2"></div>
 			<div class="centrale col-md-8 col-sm-8 col-xs-8">
 				CONFERMA LA SCELTA FATTA 
-				<button class="btn-success"><span class="glyphicon glyphicon-ok"></span></button>
+				<button class="btn-success" onclick="post_request.conferma_dati()"><span class="glyphicon glyphicon-ok"></span></button>
 			</div>
 			<div class="destro col-md-2 col-sm-2 col-xs-2"></div>
   	</div>

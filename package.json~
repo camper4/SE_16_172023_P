@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
+	"start": "node index.js"
+=======
     "start": "node index.js"
+>>>>>>> test
   },
   "repository": {
     "type": "git",
@@ -22,6 +26,6 @@
     "bind": "^0.1.7",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "pg": "^6.1.0",
+    "pg": "^6.1.0"
   }
 }

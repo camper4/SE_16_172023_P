@@ -33,13 +33,24 @@ app.get('/script.js', function(req,res){
   riceve la prima chiamata di connessione al sito e reindirizza alla homepage
 */
 app.get('/', function(req, res) {
-  
-  //carico la homepage
-  bind.toFile('template/homepage.html',{
-  },function(data){
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.end(data);
-  });
+  if(req.headers.referer == undefined){ //controllo se arrivo da un ordine completato o da una normale connessione iniziale
+    //carico la homepage normale
+    bind.toFile('template/homepage.html',{
+    },function(data){
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end(data);
+    });
+  }
+  else{
+    //carico la homepage mandando prima lo scipt di avvenuto completamento di un ordine
+    console.log("ordinefinito");
+    bind.toFile('template/homepage.html',{
+      script: "<script>alert('Complimenti, hai portato a termine un ordine, verrai reindirizzato alla homepage');</script>"
+    },function(data){
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end(data);
+    });
+  }
 });
 
 
@@ -75,7 +86,6 @@ app.get('/caricagiorni', function(req,res){
   riceve le chiamate in post per caricare nella pagina di scelta delle pietanze i vari giorni scelti dall'utente nella precedente pagina di selezione dei giorni controllandone le varie checkbox che sono state spuntate
 */
 app.post('/caricapasti', function(req,res){
-  
   //prima parte del testo della query per la ricerca nel database delle pietanze nei giorni selezionati
   var query_text = 'select giorno, mese, anno, primo , secondo , contorno , dessert from GiorniOrdinazioni where ';
   
@@ -107,7 +117,6 @@ app.post('/caricapasti', function(req,res){
       else {
         //altrimenti creo con la funzione richiamata da createHTML.js il tbody della tabella delle pietanze nei giorni scelti che verranno visualizzate nella prossima pagina in modo dinamico
         var tbody = HTML.creaTabellaOrdinazioniPossibili(ordinazioni_possibili);
-
         bind.toFile('template/selezione_pasti.html',{
             tbody: tbody
         },function(data){
@@ -177,12 +186,9 @@ app.post('/confermaordinazioni', function(req,res){
           res.redirect('/error'); //se ce ne sono rimando alla pagina di errore
         }
       else {
+        res.redirect('/');
         //altrimenti mando l'utente alla pagina che gli conferma l'avvenuta registrazione dell'ordine
-        bind.toFile('template/conferma_ordinazioni.html',{
-        },function(data){
-            res.writeHead(200, {'Content-Type':'text/html'});
-            res.end(data);
-        });
+        
       }
   });
 });

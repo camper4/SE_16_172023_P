@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "jasmine-node spec"
   },
   "repository": {
     "type": "git",
@@ -22,6 +21,10 @@
     "bind": "^0.1.7",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "pg": "^6.1.0"
+    "pg": "^6.1.0",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
   }
 }

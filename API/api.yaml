@@ -1,0 +1,119 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+# This is your document metadata
+info:
+  version: "1.0.0"
+  title: HOME FOOD Trento
+
+paths:
+  /:
+    get:
+      description: Pagina homepage principale
+      responses:
+        200:
+          description: Home page correttamente creata e ritornata all'utente
+          schema:
+            title: Carico homepage
+            type: string
+        500:
+          description: Errone interno del server
+          
+  /caricagiorni:
+    get:
+      description: Ottenere la pagina di scelta giorni
+      responses:
+        200:
+          description: Pagina dei giorni creata correttamente
+          schema:
+            title: Pagina giorni
+            type: string
+        500:
+          description: Errone interno del server
+
+  /caricapasti:
+    post:
+      description: Scelta dei pasti da scegliere
+      parameters:
+        - name: checkgiorni
+          in: formData
+          description: Date scelte dall'utente
+          required: true
+          type: string
+      responses:
+        200:
+          description: Carico pagina di scelta pietanze
+          schema:
+            title: pagina scelta pietanze
+            type: string
+        500:
+          description: Errone interno del server
+                  
+  /inviadati:
+    post:
+      description: Carico pagina di invio dei dati
+      parameters:
+        - name: checkscelte
+          in: formData
+          description: Ordinazioni fatte dall'utente
+          required: true
+          type: string
+      responses:
+        200:
+          description: Carico la pagina di invio dei dati
+          schema:
+            title: pagina invio dati
+            type: string
+        500:
+          description: Errone interno del server
+            
+  /confermaordinazioni:
+    post:
+      description: Invio dei dati al database
+      parameters:
+        - name: nome
+          in: formData
+          description: Nome utente
+          required: true
+          type: string
+        - name: cognome
+          in: formData
+          description: Cognome utente
+          required: true
+          type: string
+        - name: cod_fiscale
+          in: formData
+          description: Codice fiscale utente
+          required: true
+          type: string
+        - name: indirizzo
+          in: formData
+          description: Indirizzo utente
+          required: true
+          type: string
+        - name: email
+          in: formData
+          description: E-mail utente
+          required: true
+          type: string
+      responses:
+        200:
+          description: Caricati nel db i dati e redirect alla homepage
+          schema:
+            title: redirect alla homapage
+            type: string
+        500:
+          description: Errone interno del server
+  
+  /error:
+    get:
+      description: Carica la pagina di errore
+      responses:
+        200:
+          description: Pagina di errore caricata correttamente
+          schema:
+            title: Carico error page
+            type: string
+        500:
+          description: Errone interno del server
+          

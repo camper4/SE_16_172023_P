@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>homepage</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="stile.css" type="text/css" />
     <script src="script.js"></script> 
-    (: script :) <!-- se arrivo dal completamento di un ordine avviso l'utente -->
   </head>
-  <body background="http://www.boorp.com/sfondi_gratis_desktop_pc/sfondi_gratis/sfondi_3d_computer_grafica/giallo.jpg">
+  <body>
     <div class="container">
       <div class="row">
         <div class="superiore col-md-2 col-sm-2 col-xs-2"></div>
@@ -34,7 +35,7 @@
           <button id="chat" type="button" class="azzurro"><strong>CHAT</strong><br>Contatta un esperto per consigli</button>
         </div>
         <div class="centrale col-md-4 col-sm-4 col-xs-4"><br>
-          <div class="alert alert-danger testo_entrata" role="alert"  style='opacity:0'>
+          <div id="sviluppo" class="alert alert-danger testo_entrata" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span>
             Questa parte dell'applicazione e' ancora in sviluppo, prova un'ordinazione
@@ -45,5 +46,6 @@
         </div>
       </div>
     </div>
+    (: script :) <!-- se arrivo dal completamento di un ordine avviso l'utente -->
   </body>
 </html>

@@ -6,12 +6,31 @@ p{
   text-align: center
 }
 button{
-  cursor: pointer
+  cursor: pointer;
 }
 th,td,tr{
   text-align: center;
   vertical-align: middle;
   align-content: center;
+}
+body{
+  background-image: url( "http://www.boorp.com/sfondi_gratis_desktop_pc/sfondi_gratis/sfondi_3d_computer_grafica/giallo.jpg")
+}
+
+/* bottoni di allerta di selezione giorni e pasti e invia non visibile di default */
+.bottone_alert{
+  display : none;
+}
+
+/* messaggio di avviso nella homepage invisibile */
+#sviluppo{
+  opacity : 0;
+}
+
+/* messaggio di avviso nella pagina di invio dei dati */
+.red_invisible{
+  display : none;
+  color : red;
 }
 
 

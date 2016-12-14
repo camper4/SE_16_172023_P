@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>send</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -9,56 +11,64 @@
     <script src="script.js"></script> 
   </head>
   <body>
-    <body background="http://www.boorp.com/sfondi_gratis_desktop_pc/sfondi_gratis/sfondi_3d_computer_grafica/giallo.jpg">
-      <div class="row">
-        <div class="superiore col-md-2 col-sm-2 col-xs-2"></div>
-        <div class="superiore col-md-8 col-sm-8 col-xs-8">
-          <p id="titolo2">
-            INVIACI I TUOI DATI PER LA CONFERMA
-          </p>
-        </div>
-        <div class="superiore col-md-2 col-sm-2 col-xs-2"></div>
+    <div class="row">
+      <div class="superiore col-md-2 col-sm-2 col-xs-2"></div>
+      <div class="superiore col-md-8 col-sm-8 col-xs-8">
+        <p id="titolo2">
+          INVIACI I TUOI DATI PER LA CONFERMA
+        </p>
       </div>
-        <div class="row">
-          <form name="form_dati" method="post">
-            <div class="sinistro col-md-2 col-sm-2 col-xs-2"></div>
-            <div class="centrale col-md-8 col-sm-8 col-xs-8">
-              <div class="form-group">
-                <label for="usr">Nome:</label><input type="text" class="form-control" name="nome">
-              </div>
-              <div class="form-group">
-                <label for="pwd">Cognome:</label><input type="text" class="form-control" name="cognome">
-              </div>
-              <div class="form-group">
-                <label for="pwd">CODICE FISCALE:</label><input type="text" class="form-control" name="cod_fiscale">
-                <div id="cod_fiscale_error" style="display:none;color:red">inserisci un codice fiscale valido</div>
-              </div>	
-              <div class="form-group">
-                <label for="pwd">Indirizzo consegna ( Via , citta' , Provincia):</label><input type="text" class="form-control" name="indirizzo">
-              </div>	
-              <div class="form-group">
-                <label for="pwd">E-mail:</label><input type="text" class="form-control" name="email">
-                <div id="email_error" style="display:none;color:red">inserisci una email valida</div>
-              </div>	
-              <p class="ordinazioni"> (: ordinazioni :)</p> <!-- mostro all'utente cosa ha scelto come promemoria -->
-            </div>
-            <div class="destro col-md-2 col-sm-2 col-xs-2"></div>
-          </form>
-        </div>
-        <div class="row">
+      <div class="superiore col-md-2 col-sm-2 col-xs-2"></div>
+    </div>
+      <div class="row">
+        <form name="form_dati" method="post">
           <div class="sinistro col-md-2 col-sm-2 col-xs-2"></div>
           <div class="centrale col-md-8 col-sm-8 col-xs-8">
-            <div id="bottone_alert" class="alert alert-warning alert-dismissable" style='display:none'>
-              <button id="chiudi_alert" type="button" class="close">&times;</button>
-              <strong>Attenzione!</strong> Riempi tutte le caselle per completare l'operazione
+            <div class="form-group">
+              <label for="usr">Nome:</label><input type="text" class="form-control" name="nome">
             </div>
-            <p class="conferma">
-              CONFERMA LA SCELTA FATTA 
-              <button onclick="post_request.conferma_dati()" class="btn-success"><span class="glyphicon glyphicon-ok"></span></button>
-            </p>
+            <div class="form-group">
+              <label for="pwd">Cognome:</label><input type="text" class="form-control" name="cognome">
+            </div>
+            <div class="form-group">
+              <label for="pwd">CODICE FISCALE:</label><input type="text" class="form-control" name="cod_fiscale">
+              <div id="cod_fiscale_error" class="red_invisible">inserisci un codice fiscale valido</div>
+            </div>	
+            <div class="form-group">
+              <label for="pwd">Indirizzo consegna ( Via , citta' , Provincia):</label><input type="text" class="form-control" name="indirizzo">
+            </div>	
+            <div class="form-group">
+              <label for="pwd">E-mail:</label><input type="text" class="form-control" name="email">
+              <div id="email_error" class="red_invisible">inserisci una email valida</div>
+            </div>	
+            <p class="ordinazioni"> (: ordinazioni :)</p> <!-- mostro all'utente cosa ha scelto come promemoria -->
           </div>
           <div class="destro col-md-2 col-sm-2 col-xs-2"></div>
+        </form>
+    </div>
+    <div class="row">
+      <div class="sinistro col-md-2 col-sm-2 col-xs-2"></div>
+      <div class="centrale col-md-8 col-sm-8 col-xs-8">
+        <div class="bottone_alert alert alert-warning alert-dismissable">
+          <button id="chiudi_alert" type="button" class="close">&times;</button>
+          <strong>Attenzione!</strong> Riempi tutte le caselle per completare l'operazione
         </div>
+        <p class="conferma">
+          CONFERMA LA SCELTA FATTA 
+          <button onclick="post_request.conferma_dati()" class="btn-success"><span class="glyphicon glyphicon-ok"></span></button>
+        </p>
       </div>
+      <div class="destro col-md-2 col-sm-2 col-xs-2"></div>
+    </div>
+    <div class="row">
+      <div class="sinistro col-md-2 col-sm-2 col-xs-2"></div>
+      <div class="centrale col-md-5 col-sm-5 col-xs-5"></div>
+      <div class="destro col-md-2 col-sm-2 col-xs-2">
+        <a href="/" class="btn btn-primary btn-lg">
+          <span class="glyphicon glyphicon-home"></span>
+          Homepage 
+        </a>
+      </div>
+    </div>
   </body>
 </html>

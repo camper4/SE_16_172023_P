@@ -33,17 +33,18 @@ app.get('/script.js', function(req,res){
   riceve la prima chiamata di connessione al sito e reindirizza alla homepage
 */
 app.get('/', function(req, res) {
-  if(req.headers.referer == undefined){ //controllo se arrivo da un ordine completato o da una normale connessione iniziale
-    //carico la homepage normale
-    bind.toFile('template/homepage.html',{
+  //controllo se arrivo da un ordine completato o da una normale connessione alla homepage
+  if(!req.session.completaordine || req.session.completaordine == undefined){ 
+    bind.toFile('template/homepage.html',{    //carico la homepage normale
     },function(data){
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.end(data);
     });
   }
   else{
-    //carico la homepage mandando prima lo scipt di avvenuto completamento di un ordine
-    console.log("ordinefinito");
+    //se sono stato reindirizzato da un ordine completato setto l'attributo di sessione che era stato settato dal chiamante a false e carico un alert per informare l'utente della corretta procedura
+    req.session.completaordine=false;
+    
     bind.toFile('template/homepage.html',{
       script: "<script>alert('Complimenti, hai portato a termine un ordine, verrai reindirizzato alla homepage');</script>"
     },function(data){
@@ -186,9 +187,9 @@ app.post('/confermaordinazioni', function(req,res){
           res.redirect('/error'); //se ce ne sono rimando alla pagina di errore
         }
       else {
+        req.session.completaordine = true; //setto un attributo di sessione per dire alla homepage che provengo da un ordine completato
         res.redirect('/');
         //altrimenti mando l'utente alla pagina che gli conferma l'avvenuta registrazione dell'ordine
-        
       }
   });
 });

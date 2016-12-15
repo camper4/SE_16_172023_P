@@ -18,12 +18,19 @@ var db = require('./database.js');
 var HTML = require('./createHTML.js');
 
 
+//creo variabile che accoglierà la directory principale
+var directory_principale = "";
+for (a in __dirname){
+  //tolgo la cartella server dal path così da ottenere quello principale
+  if(a < __dirname.length - 6)
+    directory_principale += __dirname[a];
+}
 //rendo disponibile gli stili e le funzioni di script per le pagine HTML
 app.get('/stile.css', function(req,res){
-	res.sendFile('template/stile.css' , { root : __dirname });
+	res.sendFile('client/stile.css' , { root : directory_principale });
 });
 app.get('/script.js', function(req,res){
-	res.sendFile('template/script.js' , { root : __dirname });
+	res.sendFile('client/script.js' , { root : directory_principale });
 });
 
 
@@ -34,7 +41,7 @@ app.get('/script.js', function(req,res){
 app.get('/', function(req, res) {
   //controllo se arrivo da un ordine completato o da una normale connessione alla homepage
   if(!req.session.completaordine || req.session.completaordine == undefined){ 
-    bind.toFile('template/homepage.html',{    //carico la homepage normale
+    bind.toFile('client/homepage.html',{    //carico la homepage normale
     },function(data){
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.end(data);
@@ -44,7 +51,7 @@ app.get('/', function(req, res) {
     //se sono stato reindirizzato da un ordine completato setto l'attributo di sessione che era stato settato dal chiamante a false e carico un alert per informare l'utente della corretta procedura
     req.session.completaordine=false;
     
-    bind.toFile('template/homepage.html',{
+    bind.toFile('client/homepage.html',{
       script: "<script>alert('Complimenti, hai portato a termine un ordine, verrai reindirizzato alla homepage');</script>"
     },function(data){
         res.writeHead(200, {'Content-Type': 'text/html'});
@@ -71,7 +78,7 @@ app.get('/caricagiorni', function(req,res){
         var tbody = HTML.creaTbodyGiorni(giorni);
 
         //carico il file html co il tbody creato con le varie date disponibili
-        bind.toFile('template/selezione_giorni.html',{
+        bind.toFile('client/selezione_giorni.html',{
             tbody: tbody
         },function(data){
             res.writeHead(200, {'Content-Type':'text/html'});
@@ -117,7 +124,7 @@ app.post('/caricapasti', function(req,res){
       else {
         //altrimenti creo con la funzione richiamata da createHTML.js il tbody della tabella delle pietanze nei giorni scelti che verranno visualizzate nella prossima pagina in modo dinamico
         var tbody = HTML.creaTabellaOrdinazioniPossibili(ordinazioni_possibili);
-        bind.toFile('template/selezione_pasti.html',{
+        bind.toFile('client/selezione_pasti.html',{
             tbody: tbody
         },function(data){
             res.writeHead(200, {'Content-Type':'text/html'});
@@ -154,7 +161,7 @@ app.post('/inviadati', function(req,res){
   ordinazioni_da_mostrare += "<br>"; //aggiungo l'ultimo a capo nella variabile che mostrerà le ordinazioni nella pagina di invio
   
   // carico la pagina di conferma dell'ordinazione con l'inserimento dei propri dati
-  bind.toFile('template/invia.html',{
+  bind.toFile('client/invia.html',{
       ordinazioni: ordinazioni_da_mostrare //mando alla pagina le ordinazioni scelte dall'utente come promemoria per la conferma
     }, function(data){
         res.writeHead(200, {'Content-Type':'text/html'});
@@ -198,7 +205,7 @@ app.post('/confermaordinazioni', function(req,res){
   chiamata in get che si attiva quando si ha rilevato un errore interno
 */
 app.get('/error', function(req, res) {
-  bind.toFile('template/error.html',{
+  bind.toFile('client/error.html',{
   }, function(data) {
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.end(data);

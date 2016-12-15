@@ -16,14 +16,14 @@ Inoltre le prenotazioni non mi funzionano proprio sempre e bisogna per forza com
 
 Files considerati per la review:
 - userManager.js
-- abbonamenti/abbonamento.html
+- login/login.tpl
 - home/controlhome.js
 - home/home.html
 
 Analisi del codice preso in esame:
 -A livello strutturale avrei messo tutte le pagine html e template in un'unica cartella client, divise anche in cartelle come lo sono nel progetto o forse meglio con un unico file di script senza suddivisioni di cartelle.
 -In userManager.js si poteva pensare ad una funzione a parte per la connessione al database dato che la parte "pg.connect..." viene ripetuta più volte. Anche qui noto un'indentazione piuttosto confusionaria. Il codice risulta abbastanza poco commentato soprattutto nelle parti centrali delle chiamate. Nella chiamata a '/my_prenotazioni/' si poteva anche omettere la parte di iniziale della tabella e scriverla direttamente nel file html, per concentrarsi solo nel corpo centrale. Funzioni come lunghezza() e prenota_values(...) sarebbe più opportuno metterle in un file a parte che racchiude la modellazione dei dati in quanto queste operano con il database.
--in abbonamento.html l'indentazione dei vari elementi non è proprio ben strutturata e non capisco l'inserimento di attributi action vuoti in alcuni elementi. Per il resto il file sembra rispettare le regole.
+-in login.tpl l'indentazione dei vari elementi non è proprio ben strutturata e contiene alcuni elementi che andrebbero inseriti in un css a parte.
 -controlhome.js sembra essere fatto correttamente a parte sempre qualche piccolo difetto di indentazione
 -home.html contiene un attributo background in body che dovrebbe essere inserito il un file css a parte. Inoltre ha il solito problema dell'indentazione
 

@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Pagina Principale</title>     
+    <script src="controlhome.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+</head>
+<body background="immagine.png">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+   
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand" href="login_home">Home</a>
+    </div>
+
+   
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <form method="post" class="navbar-form navbar-right" role="form" name="FormLogin">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="username_input" type="text" class="form-control" name="username_input" value="" placeholder="username">                                        
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input id="password_input" type="password" class="form-control" name="password_input" value="" placeholder="password">                                        
+                        </div>
+
+                       <input type="button" id="login_button" value="Login" OnClick="Controllo_Home()" class= "btn btn-info">
+                     
+        </form>
+           <form action="/registrazione" method='post' name="FormRegister" class="navbar-form navbar-right">
+                 <input type="submit" id="login_button" value="Register" class= "btn btn-info">
+                </form>     
+    </div>
+  </div>
+</nav>
+    
+<!--
+GESTIONE ABBONAMENTO E PRENOTAZIONI 
+-->
+
+<!--
+FORM PER ABBONAMENTI 
+-->
+<br><br><br>    
+<div  style="text-align: center">
+<p><h3>Gestione Abbonamenti e prenotazione BUS</h3></p><br><br>
+<form action="" method='post' name="FormAbbonamento">
+<p><input type="submit" id="abbonamento_button" value="Abbonamento"  class="btn btn-primary" disabled>
+</p>
+</form><br><br>
+<!--
+FORM PER PRENOTAZIONI 
+-->    
+<form action="" method='post' name="FormPrenotazione">
+<p><input type="submit" id="prenotazione_button" value="TripPlanner"  class="btn btn-primary" disabled>
+</p>
+</form>  
+    </div>
+</body>
+</html>

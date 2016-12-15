@@ -8,7 +8,7 @@ var post_request = {
   mostra_pasti: function(){
     if(checknum == 0){ //controllo che almeno una casella sia stata premuta
       //se nessuna casella è premuta mostro l'avviso di errore
-      $("#bottone_alert").css("display","block"); 
+      $(".bottone_alert").css("display","block"); 
     }
     else{
       //altrimenti mando la richiesta al server
@@ -23,7 +23,7 @@ var post_request = {
   invia_dati: function(){
     if(checknum == 0){//controllo che almeno una casella sia stata premuta
       //se nessuna casella è premuta mostro l'avviso di errore
-      $("#bottone_alert").css("display","block");
+      $(".bottone_alert").css("display","block");
     }
     else{
       //altrimenti mando la richiesta al server
@@ -43,7 +43,7 @@ var post_request = {
     //controllo che non ci siano campi vuoti nel form
     if(form_dati.nome.value == "" || form_dati.cognome.value == "" || form_dati.cod_fiscale.value == "" || form_dati.indirizzo.value == "" || form_dati.email.value == ""){
       //se ci sono campi vuoti visualizzo il messaggio di allerta
-      $("#bottone_alert").css("display","block");
+      $(".bottone_alert").css("display","block");
     }
     else{
       //altrimenti dopo aver controllato che il codice fiscale e la mail siano corretti mando la richiesta al server
@@ -76,9 +76,9 @@ $(document).ready(function () {
     }, 500); 
   });
   
-  //funzione della crocetta del riquadro di allerta di 'selezione_giorni.html' e 'selezione_pasti.html' che lo chiude
+  //funzione della crocetta del riquadro di allerta di 'selezione_giorni.html' e 'selezione_pasti.html' e 'invia.html' che chiude la finestra di attenzione
   $("#chiudi_alert").click(function(){
-    $("#bottone_alert").css("display","none");
+    $(".bottone_alert").css("display","none");
   });
   
   //funizioni per evidenziare la casella corrente nelle tabelle

@@ -26,7 +26,7 @@ function creaTbodyGiorni(giorni){
  * @return Stringa contenente un pezo di codice HTML da inserire in una pagina dal server
  */
 function creaTabellaOrdinazioniPossibili(ord){
-  text = "<tbody>\n";
+  var text = "<tbody>\n";
   for (a in ord){
     text += "<tr>\n";
       text += "<td><b>";

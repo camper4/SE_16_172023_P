@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/camper4/SE_16_172023_P#readme",
   "dependencies": {
-    "all": "0.0.0",
     "bind": "^0.1.7",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",

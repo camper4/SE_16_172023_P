@@ -1,0 +1,19 @@
+//crea le tabelle per inserire le pietanze nei vari giorni e per accogliere le ordinazioni
+create table GiorniOrdinazioni (giorno integer NOT NULL, mese varchar(44) NOT NULL, anno integer NOT NULL, primo varchar(44), secondo varchar(44), contorno varchar(44), dessert varchar(44), UNIQUE(giorno,mese,anno));
+
+create table Ordinazioni (nome varchar(44), cognome varchar(44), codice_fiscale varchar(16) NOT NULL, indirizzo varchar(44) NOT NULL, email varchar(44) NOT NULL , ordinazioni varchar(444) NOT NULL, UNIQUE (codice_fiscale , ordinazioni) );
+
+
+
+//alcuni casuali inserimenti su determinati giorni che andranno fatti dall'azienda
+INSERT INTO GiorniOrdinazioni (giorno , mese ,anno, primo, secondo, contorno, dessert) VALUES (17, 'dicembre', 2016 , 'minestra' , 'filetto di manzo' , 'piselli' , 'torta della nonna');
+
+INSERT INTO GiorniOrdinazioni (giorno,mese,anno, primo, secondo, contorno, dessert) VALUES (18, 'dicembre', 2016 , 'pasta' , 'grigliata mista' , 'carote' , 'frutta');
+
+INSERT INTO GiorniOrdinazioni (giorno,mese,anno, primo, secondo, contorno, dessert) VALUES (19, 'dicembre', 2016 , 'riso' , 'pollo' , 'fagioli' , 'tiramisu');
+
+INSERT INTO GiorniOrdinazioni (giorno,mese,anno, primo, secondo, contorno, dessert) VALUES (20, 'dicembre', 2016 , 'minestra' , 'coniglio' , 'patate al forno' , 'frutta');
+
+
+
+
